@@ -52,7 +52,7 @@ public class dm_4 {
 			}
 		}
 		//System.out.println(binsize);
-		normalizeBins(0);
+		normalizeBins(2);
 	}
 	
 	private void normalizeBins(int choice) 
@@ -68,6 +68,59 @@ public class dm_4 {
 				//System.out.println(sum/binsize);
 				for(int j=0;j<binsize;j++)
 					finaldata.add((double)sum/(double)binsize);
+			}
+			System.out.println(finaldata);
+		}
+		else if(choice==1)
+		{
+			finaldata=new ArrayList<>();
+			if(binsize%2==0)
+			{
+				for(int i=0;i<binsize*nbin;i+=binsize)
+				{
+					double median = (data.get(i+binsize/2-1)+data.get(i+binsize/2))/2;
+					
+					for(int j=0;j<binsize;j++)
+						finaldata.add(median);
+					//System.out.println(median);
+				}
+			}
+			else
+			{
+				for(int i=0;i<binsize*nbin;i+=binsize)
+				{
+					double median = data.get(i+binsize/2);
+					for(int j=0;j<binsize;j++)
+						finaldata.add(median);
+					//System.out.println(median);
+				}
+			}
+			System.out.println(finaldata);
+			
+		}
+		
+		
+		else
+		{
+			finaldata=new ArrayList<>();
+			for(int i=0;i<nbin;i++)
+			{
+				for(int j=0;j<binsize;j++)
+				{
+					//System.out.println(i*binsize);
+					if(j==0)
+						finaldata.add((double)data.get(i*binsize+j));
+					else if(j==(binsize-1))
+						finaldata.add((double)data.get(i*binsize+j));
+					else
+					{
+						if(data.get(i*binsize+j)-data.get(i*binsize)>data.get(i*binsize+binsize-1)-data.get(i*binsize+j) )
+							finaldata.add((double)data.get(i*binsize+binsize-1));
+						else
+							finaldata.add((double)data.get(i*binsize));
+					}
+					
+				}
 			}
 			System.out.println(finaldata);
 		}
