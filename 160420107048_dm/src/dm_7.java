@@ -27,8 +27,7 @@ public class dm_7 {
 
 	
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		//System.out.println("hi");
+
 		new dm_7();
 
 	}
@@ -45,8 +44,7 @@ public class dm_7 {
 				nmax=Integer.valueOf(val);	
 			flag++;
 		}
-		//nmin=Integer.valueOf(dataList[1][1]);
-		//nmax=dataList[1][2];
+
 		evaluate();
 		
 		int i=0;
@@ -64,18 +62,14 @@ public class dm_7 {
 				}
 			}
 			
-			//System.out.println(key);
+
 			finaldatas[i]=key;
 			values[i]=maxValues;
 			i++;
 			finaldata.remove(key);
-			
-			//System.out.println(" ");
+
 		}
-		
-		
-		//Collections.sort(finaldata);
-		//System.out.println(finaldata);
+
 		for (i=0;i<finaldatas.length;i++)
 		{
 			System.out.println(finaldatas[i]+" "+values[i]);
@@ -89,11 +83,11 @@ public class dm_7 {
 
 		while ((line = bin.readLine()) != null) {
 			cols = line.split(",");
-			//System.out.println(cols);
+
 			dataList.add(cols);
 
 		}
-		// TODO Auto-generated method stub
+
 
 	}
 	
@@ -111,11 +105,6 @@ public class dm_7 {
 				while ((line = bin.readLine()) != null) {
 					cols=line.split(",");
 					float newval = ((Float.valueOf(cols[1])-Float.valueOf(rows[1]))/(Float.valueOf(rows[2])-Float.valueOf(rows[1])))*(nmax-nmin)+nmin;
-					//String[] values = new String[2];
-					//System.out.println(cols[1]+" "+rows[1]+" "+rows[2]+" "+nmin+" "+nmax+newval);
-					//values[0]=cols[0];
-					//values[1]=String.valueOf(newval);
-					//System.out.println(values[0]+" "+values[1]);
 					finaldata.put(cols[0],newval);
 					
 				}
