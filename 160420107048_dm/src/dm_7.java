@@ -22,11 +22,13 @@ public class dm_7 {
 	int missingCol[];
 	float nmin,nmax;
 	Hashtable<String, Float> finaldata;
-	Hashtable<String, Float> finaldatas;
+	String[] finaldatas;
+	float[] values;
 
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
+		//System.out.println("hi");
 		new dm_7();
 
 	}
@@ -46,26 +48,37 @@ public class dm_7 {
 		//nmin=Integer.valueOf(dataList[1][1]);
 		//nmax=dataList[1][2];
 		evaluate();
-		finaldatas = new Hashtable<String, Float>();
+		
+		int i=0;
+		finaldatas=new String[finaldata.size()];
+		values=new float[finaldata.size()];
 		while(finaldata.size()!=0)
 		{
-			float maxValues=nmax;
+			float maxValues=nmin;
 			String key="";
 			for (String data : finaldata.keySet()) {
 				if (finaldata.get(data) > maxValues) {
-					System.out.println(maxValues);
+					//System.out.println(maxValues);
 					maxValues = finaldata.get(data);
 					key=data;
 				}
 			}
-			finaldatas.put(key, maxValues);
+			
+			//System.out.println(key);
+			finaldatas[i]=key;
+			values[i]=maxValues;
+			i++;
 			finaldata.remove(key);
+			
+			//System.out.println(" ");
 		}
+		
+		
 		//Collections.sort(finaldata);
 		//System.out.println(finaldata);
-		for (String data : finaldatas.keySet())
+		for (i=0;i<finaldatas.length;i++)
 		{
-			System.out.println(data+" "+finaldatas.get(data));
+			System.out.println(finaldatas[i]+" "+values[i]);
 		}
 	}
 	
